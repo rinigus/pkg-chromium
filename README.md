@@ -3,17 +3,18 @@
 This is a repository containing files and docs regarding Chromium
 packaging for Sailfish OS.
 
-Disclaimer: *IT CANNOT BE USED AS A BROWSER AT THE MOMENT*
+Disclaimer: **IT CANNOT BE USED AS A BROWSER AT THE MOMENT**
 
 As we have /opt/qt5, we have access to newer Wayland protocols. So, it
 is possible to get access to newer protocols via nested
 compositor. Experiments are done with `pure-qml` (example from Qt
 running inside `qt-runner`) or
-[newcompositor](https://github.com/ArturGaspar/newcompositor)
+[newcompositor](https://github.com/ArturGaspar/newcompositor).
 
 ## Status
 
-- Chromium can start on SFOS without any containers
+- Chromium can start on SFOS without any containers (see below for ldd
+  output)
 
 - It can show its window to `WAYLAND_DISPLAY` exported by pure-qml or
   newcompositor.
@@ -22,9 +23,9 @@ running inside `qt-runner`) or
   work in newcompositor.
 
 - In newcompositor it is possible to get chromium scaled by running
-  `QT_SCALE_FACTOR=2 newcompositor` . Doesn't scale in pure-qml yet
+  `QT_SCALE_FACTOR=2 newcompositor` . Doesn't scale in pure-qml yet.
 
-- Breaking: No keyboard support
+- Breaking: No keyboard support.
 
 - Not sure about HW acceleration as I cannot enter `chrome://gpu`
   without keyboard.
@@ -44,10 +45,12 @@ running inside `qt-runner`) or
   through interactive use. Should be simple to do with other supported
   Linux distros.
 
-- used settings are in [args.gn](args.gn)
+- used settings are in [args.gn](args.gn).
 
 - To get cross-compilation sysroot, run
-  `build/linux/sysroot_scripts/install-sysroot.py --arch=arm64`
+  `build/linux/sysroot_scripts/install-sysroot.py --arch=arm64`. This
+  fetches debian_bullseye_arm64-sysroot with old GLIBC. Sysroot is
+  under chromium/src/build/linux.
 
 - Compilation:
 
@@ -56,10 +59,10 @@ autoninja -C out/arm64 chrome
 ninja -C out/arm64 "chrome/installer/linux:unstable_deb"
 ```
 
-- Create tgz from generated DEB by `alien -t chromium-browser-unstable*arm64.deb`
+- Create tgz from generated DEB by `alien -t chromium-browser-unstable*arm64.deb`.
 
 
-## Stdout
+## stdout
 
 ```
 /opt/chromium.org/chromium-unstable/chromium-browser --start-maximized
