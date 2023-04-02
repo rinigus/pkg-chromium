@@ -1,0 +1,24 @@
+# Set build arguments here. See `gn help buildargs`.
+is_debug = false
+symbol_level = 0
+enable_nacl = false
+blink_symbol_level=0
+v8_symbol_level=0
+chrome_pgo_phase = 0
+dcheck_always_on = false
+
+use_ozone=true
+ozone_auto_platforms=false
+ozone_platform_x11=false
+ozone_platform_wayland=true
+ozone_platform="wayland"
+
+use_gtk=false
+use_qt=true
+use_gnome_keyring=false
+use_glib=false
+rtc_use_pipewire=false
+enable_linux_installer=true
+
+target_os="linux"
+target_cpu="arm64"
